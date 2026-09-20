@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from "@/context/CartContext";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -14,9 +13,9 @@ const fontHeading = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Udupi Lunch Home | QR Menu & Online Ordering — Goregaon West, Mumbai",
+  title: "Udupi Lunch Home | Digital Restaurant Menu — Goregaon West, Mumbai",
   description:
-    "Order authentic Mangalorean & Udupi non-veg specialities — Chicken Thali, Fish Fry, Kori Rotti, Neer Dosa & more. Place your order directly from the table. Free delivery on orders above ₹500.",
+    "Explore authentic Mangalorean & Udupi non-veg specialities — Chicken Thali, Fish Fry, Kori Rotti, Neer Dosa & more. Call to order: +91 83569 28612.",
 };
 
 export default function RootLayout({
@@ -27,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fontSans.variable} ${fontHeading.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans">
-        <CartProvider>{children}</CartProvider>
+        {children}
       </body>
     </html>
   );

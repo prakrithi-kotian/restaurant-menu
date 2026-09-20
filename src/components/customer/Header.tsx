@@ -2,26 +2,27 @@
 
 import React from "react";
 import Link from "next/link";
-import { useCart } from "@/context/CartContext";
 import Image from "next/image";
-import { ShoppingBag, Search, MapPin, Phone, Truck } from "lucide-react";
+import { Search, MapPin, Phone } from "lucide-react";
 
 interface HeaderProps {
   searchQuery?: string;
   onSearchChange?: (q: string) => void;
   showSearch?: boolean;
+  tableNumber?: string | null;
 }
 
-export function CustomerHeader({ searchQuery = "", onSearchChange, showSearch = true }: HeaderProps) {
-  const { itemCount, tableNumber } = useCart();
-
+export function CustomerHeader({ searchQuery = "", onSearchChange, showSearch = true, tableNumber }: HeaderProps) {
   return (
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/60 shadow-xs transition-all">
-      {/* Free Delivery Banner */}
-      <div className="bg-emerald-900 text-emerald-100 text-[11px] font-bold py-1 px-4 text-center flex items-center justify-center gap-1.5 border-b border-emerald-800">
-        <Truck className="w-3.5 h-3.5 text-emerald-300" />
-        <span>FREE DELIVERY ON ORDERS ABOVE ₹500</span>
-        <span className="hidden sm:inline text-emerald-400 font-normal">| Call: +91 83569 28612</span>
+      {/* Phone Ordering Banner */}
+      <div className="bg-emerald-900 text-emerald-100 text-[11px] font-bold py-1.5 px-4 text-center flex items-center justify-center gap-2 border-b border-emerald-800">
+        <Phone className="w-3.5 h-3.5 text-emerald-300" />
+        <a href="tel:+918356928612" className="hover:underline flex items-center gap-1">
+          <span>Call to Order:</span>
+          <span className="text-amber-300 font-mono font-extrabold">+91 83569 28612</span>
+        </a>
+        <span className="hidden sm:inline text-emerald-400 font-normal">| Goregaon West, Mumbai</span>
       </div>
 
       <div className="max-w-5xl mx-auto px-4 py-2 sm:py-2.5">
@@ -59,28 +60,15 @@ export function CustomerHeader({ searchQuery = "", onSearchChange, showSearch = 
             </div>
           </Link>
 
-          {/* Phone & Cart Actions */}
+          {/* Call to Order Action */}
           <div className="flex items-center gap-2">
             <a
               href="tel:+918356928612"
-              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-muted text-foreground text-xs font-bold border border-border/80 hover:bg-accent transition-colors"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-red-800 hover:bg-red-900 text-white font-extrabold text-xs sm:text-sm shadow-md shadow-red-900/20 transition-all active:scale-95"
             >
-              <Phone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>+91 83569 28612</span>
+              <Phone className="w-4 h-4 text-amber-300" />
+              <span>📞 +91 83569 28612</span>
             </a>
-
-            <Link
-              href="/cart"
-              className="relative inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-red-800 hover:bg-red-900 text-white font-bold text-xs sm:text-sm shadow-md shadow-red-900/20 transition-all active:scale-95"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              <span className="hidden sm:inline font-bold">Cart</span>
-              {itemCount > 0 && (
-                <span className="px-2 py-0.5 rounded-full bg-amber-400 text-red-950 text-xs font-black shadow-xs">
-                  {itemCount}
-                </span>
-              )}
-            </Link>
           </div>
         </div>
 

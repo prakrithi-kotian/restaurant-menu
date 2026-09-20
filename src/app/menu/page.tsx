@@ -1,10 +1,8 @@
 "use client";
 
 import React, { useEffect, useState, useMemo, useCallback, Suspense } from "react";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { useCart } from "@/context/CartContext";
 import { Category, MenuItem, MostOrderedItem } from "@/types/database";
 import { getCategories } from "@/lib/queries/categories";
 import { getMenuItems, getMostOrderedMenuItems } from "@/lib/queries/menu";
@@ -14,12 +12,10 @@ import { TrendingSection } from "@/components/customer/TrendingSection";
 import { MostOrderedSection } from "@/components/customer/MostOrderedSection";
 import { MenuCard } from "@/components/customer/MenuCard";
 import { CustomerFooter } from "@/components/customer/Footer";
-import { formatPrice } from "@/lib/utils";
-import { ShoppingBag, ArrowRight } from "lucide-react";
 
 function MenuContent() {
   const searchParams = useSearchParams();
-  const { setTableNumber, itemCount, subtotal } = useCart();
+  const tableParam = searchParams.get("table");
   const supabase = createClient();
 
   const [categories, setCategories] = useState<Category[]>([]);
@@ -28,14 +24,6 @@ function MenuContent() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [loading, setLoading] = useState(true);
-
-  // Capture table query param if present
-  useEffect(() => {
-    const tableParam = searchParams.get("table");
-    if (tableParam) {
-      setTableNumber(tableParam);
-    }
-  }, [searchParams, setTableNumber]);
 
   // Realtime refetch callback (used only by the subscription, not called directly in an effect)
   const fetchData = useCallback(async () => {
@@ -147,6 +135,7 @@ function MenuContent() {
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
           showSearch={true}
+          tableNumber={tableParam}
         />
 
         <main className="max-w-5xl mx-auto px-4 py-4">
@@ -230,33 +219,6 @@ function MenuContent() {
           )}
         </main>
       </div>
-
-      {/* Sticky Bottom Cart Bar for Mobile & Desktop when items present */}
-      {itemCount > 0 && (
-        <div className="sticky bottom-4 z-40 px-4 max-w-lg mx-auto w-full my-4">
-          <Link
-            href="/cart"
-            className="flex items-center justify-between p-4 rounded-2xl bg-red-800 text-white shadow-2xl shadow-red-950/40 hover:bg-red-900 transition-all border border-red-700 active:scale-98"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-400 text-red-950 flex items-center justify-center font-black">
-                <ShoppingBag className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-amber-200">
-                  {itemCount} {itemCount === 1 ? "item" : "items"} in cart
-                </div>
-                <div className="text-base font-black tracking-tight">{formatPrice(subtotal)}</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-1.5 font-black text-sm text-amber-300">
-              <span>View Cart & Checkout</span>
-              <ArrowRight className="w-4 h-4" />
-            </div>
-          </Link>
-        </div>
-      )}
 
       {/* Customer Footer */}
       <CustomerFooter />

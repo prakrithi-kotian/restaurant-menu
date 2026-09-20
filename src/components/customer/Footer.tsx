@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Phone, MapPin, Truck, AlertCircle } from "lucide-react";
+import { Phone, MapPin, AlertCircle } from "lucide-react";
 
 export function CustomerFooter() {
   return (
@@ -29,14 +29,14 @@ export function CustomerFooter() {
             </p>
           </div>
 
-          {/* Delivery & Call */}
+          {/* Call to Order */}
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-700/50 text-xs font-bold">
-              <Truck className="w-4 h-4 text-emerald-400" />
-              FREE DELIVERY ON ORDERS ABOVE ₹500
+              <Phone className="w-4 h-4 text-emerald-400" />
+              Direct Kitchen Phone Orders
             </div>
             <div>
-              <div className="text-[11px] uppercase tracking-wider text-amber-400 font-medium">Order / Inquiries</div>
+              <div className="text-[11px] uppercase tracking-wider text-amber-400 font-medium">Call to Order</div>
               <a
                 href="tel:+918356928612"
                 className="inline-flex items-center gap-2 text-base font-extrabold text-white hover:text-amber-300 transition-colors"
@@ -63,7 +63,7 @@ export function CustomerFooter() {
           <div className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
             <AlertCircle className="w-4 h-4 text-amber-400" /> Important Information & Terms
           </div>
-          <ul className="text-xs text-amber-200/80 space-y-1 list-disc list-inside">
+          <ul className="text-xs text-amber-200/90 space-y-1 list-disc list-inside">
             <li>Additional papad, extra chicken pieces, additional fish, and extra rice are charged extra.</li>
             <li>Parcel charges apply on takeaway orders.</li>
             <li>Thali sharing is strictly not allowed.</li>

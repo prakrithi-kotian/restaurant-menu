@@ -11,19 +11,15 @@ import { CustomerHeader } from "@/components/customer/Header";
 import { AvailabilityBadge } from "@/components/customer/AvailabilityBadge";
 import { CustomerFooter } from "@/components/customer/Footer";
 import { MenuCard } from "@/components/customer/MenuCard";
-import { useCart } from "@/context/CartContext";
-import { ArrowLeft, Clock, Flame, Plus, Minus, Check, ShoppingBag, Sparkles } from "lucide-react";
+import { ArrowLeft, Clock, Flame, Sparkles, Phone } from "lucide-react";
 
 export default function ItemDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   const supabase = createClient();
-  const { addToCart } = useCart();
 
   const [item, setItem] = useState<MenuItem | null>(null);
   const [relatedItems, setRelatedItems] = useState<MenuItem[]>([]);
-  const [quantity, setQuantity] = useState<number>(1);
   const [loading, setLoading] = useState(true);
-  const [added, setAdded] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -89,15 +85,6 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
     item.image_url ||
     "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=800";
 
-  const handleAddToCart = () => {
-    if (!orderable) return;
-    const success = addToCart(item, quantity);
-    if (success) {
-      setAdded(true);
-      setTimeout(() => setAdded(false), 1500);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background flex flex-col justify-between">
       <div>
@@ -157,52 +144,33 @@ export default function ItemDetailPage({ params }: { params: Promise<{ id: strin
                 {item.description || "Authentic coastal Udupi recipe prepared fresh to order."}
               </p>
 
-              {/* Quantity Selector & Add Button */}
+              {/* Call to Order Action */}
               <div className="pt-4 border-t border-border/50 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                {/* Quantity */}
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-foreground">Quantity:</span>
-                  <div className="flex items-center gap-2 bg-muted p-1 rounded-xl border border-border">
-                    <button
-                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      disabled={quantity <= 1 || !orderable}
-                      className="w-8 h-8 rounded-lg bg-card text-foreground flex items-center justify-center font-bold text-xs disabled:opacity-40"
-                    >
-                      <Minus className="w-3.5 h-3.5" />
-                    </button>
-                    <span className="w-8 text-center font-black text-sm">{quantity}</span>
-                    <button
-                      onClick={() => setQuantity(quantity + 1)}
-                      disabled={!orderable}
-                      className="w-8 h-8 rounded-lg bg-card text-foreground flex items-center justify-center font-bold text-xs disabled:opacity-40"
-                    >
-                      <Plus className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
+                <div>
+                  <span className="text-xs text-muted-foreground font-medium block">
+                    Call restaurant to place your order:
+                  </span>
+                  <span className="text-xs font-bold text-foreground">
+                    Available for dine-in & takeaway
+                  </span>
                 </div>
 
-                {/* Action Button */}
-                <button
-                  onClick={handleAddToCart}
-                  disabled={!orderable}
-                  className={`flex-1 sm:flex-initial px-6 py-3.5 rounded-2xl font-black text-sm flex items-center justify-center gap-2 shadow-md transition-all ${
-                    !orderable
-                      ? "bg-muted text-muted-foreground cursor-not-allowed border border-border"
-                      : added
-                      ? "bg-emerald-700 text-white shadow-emerald-700/20"
-                      : "bg-red-800 hover:bg-red-900 text-white shadow-red-900/20 active:scale-95"
-                  }`}
-                >
-                  {added ? (
-                    <>
-                      <Check className="w-5 h-5" /> Added to Order
-                    </>
-                  ) : (
-                    <>
-                      <ShoppingBag className="w-5 h-5" /> Add to Order ({formatPrice(item.price * quantity)})
-                    </>
-                  )}
-                </button>
+                {!orderable ? (
+                  <button
+                    disabled
+                    className="px-6 py-3.5 rounded-2xl font-black text-sm bg-muted text-muted-foreground cursor-not-allowed border border-border"
+                  >
+                    Currently Unavailable
+                  </button>
+                ) : (
+                  <a
+                    href="tel:+918356928612"
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-2xl font-black text-sm flex items-center justify-center gap-2 bg-red-800 hover:bg-red-900 text-white shadow-md shadow-red-900/20 transition-all active:scale-95"
+                  >
+                    <Phone className="w-5 h-5 text-amber-300" />
+                    <span>📞 Call to Order (+91 83569 28612)</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>

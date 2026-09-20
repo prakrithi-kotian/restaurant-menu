@@ -6,45 +6,14 @@ import Link from "next/link";
 import { MenuItem } from "@/types/database";
 import { formatPrice, isItemOrderable } from "@/lib/utils";
 import { AvailabilityBadge } from "./AvailabilityBadge";
-import { useCart } from "@/context/CartContext";
-import { Flame, Clock, Plus, Minus, Check } from "lucide-react";
+import { Flame, Clock, Phone } from "lucide-react";
 
 interface MenuCardProps {
   item: MenuItem;
 }
 
 export function MenuCard({ item }: MenuCardProps) {
-  const { addToCart, updateQuantity, items } = useCart();
   const orderable = isItemOrderable(item);
-  const [addedAnimation, setAddedAnimation] = React.useState(false);
-
-  const cartItem = items.find((i) => i.menuItem.id === item.id);
-  const quantityInCart = cartItem ? cartItem.quantity : 0;
-
-  const handleAdd = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (!orderable) return;
-
-    const success = addToCart(item, 1);
-    if (success) {
-      setAddedAnimation(true);
-      setTimeout(() => setAddedAnimation(false), 1000);
-    }
-  };
-
-  const handleIncrement = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (!orderable) return;
-    updateQuantity(item.id, quantityInCart + 1);
-  };
-
-  const handleDecrement = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    updateQuantity(item.id, quantityInCart - 1);
-  };
 
   const defaultImage =
     item.image_url ||
@@ -107,7 +76,7 @@ export function MenuCard({ item }: MenuCardProps) {
           </div>
         </div>
 
-        {/* Price & Quantity Actions */}
+        {/* Price & Call to Order Action */}
         <div className="pt-2.5 border-t border-border/50 flex items-center justify-between gap-2 mt-auto">
           <div>
             <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider block">Price</span>
@@ -119,49 +88,19 @@ export function MenuCard({ item }: MenuCardProps) {
           {!orderable ? (
             <button
               disabled
-              className="px-3.5 py-2 rounded-xl text-xs font-bold bg-muted text-muted-foreground cursor-not-allowed border border-border/50"
+              className="px-3.5 py-2 rounded-xl text-xs font-bold bg-muted text-muted-foreground cursor-not-allowed border border-border/50 shrink-0"
             >
               Unavailable
             </button>
-          ) : quantityInCart > 0 ? (
-            <div className="inline-flex items-center rounded-xl bg-red-800 text-white p-0.5 shadow-md shadow-red-900/20">
-              <button
-                onClick={handleDecrement}
-                className="w-7 h-7 flex items-center justify-center hover:bg-red-900 rounded-lg transition-colors active:scale-90"
-                aria-label="Decrease quantity"
-              >
-                <Minus className="w-3.5 h-3.5" />
-              </button>
-              <span className="w-7 text-center text-xs font-black px-1">{quantityInCart}</span>
-              <button
-                onClick={handleIncrement}
-                className="w-7 h-7 flex items-center justify-center hover:bg-red-900 rounded-lg transition-colors active:scale-90"
-                aria-label="Increase quantity"
-              >
-                <Plus className="w-3.5 h-3.5" />
-              </button>
-            </div>
           ) : (
-            <button
-              onClick={handleAdd}
-              className={`px-4 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition-all active:scale-95 ${
-                addedAnimation
-                  ? "bg-emerald-700 text-white shadow-md shadow-emerald-700/20"
-                  : "bg-red-800 text-white hover:bg-red-900 shadow-md shadow-red-900/20"
-              }`}
+            <a
+              href="tel:+918356928612"
+              onClick={(e) => e.stopPropagation()}
+              className="px-3.5 py-2 rounded-xl text-xs font-extrabold flex items-center gap-1.5 bg-red-800 hover:bg-red-900 text-white shadow-md shadow-red-900/20 transition-all active:scale-95 shrink-0"
             >
-              {addedAnimation ? (
-                <>
-                  <Check className="w-4 h-4" />
-                  Added
-                </>
-              ) : (
-                <>
-                  <Plus className="w-4 h-4" />
-                  Add
-                </>
-              )}
-            </button>
+              <Phone className="w-3.5 h-3.5 text-amber-300" />
+              <span>Call to Order</span>
+            </a>
           )}
         </div>
       </div>
