@@ -157,20 +157,6 @@ export const INITIAL_MENU_ITEMS: MenuItem[] = [
     created_at: new Date().toISOString(),
     category: INITIAL_CATEGORIES[5],
   },
-  {
-    id: "item-20",
-    category_id: "cat-6",
-    name: "Kori Rotti",
-    description: "Crispy rice wafers served with spicy curry gravy",
-    price: 249,
-    image_url: "/images/menu/kori-rotti-sukka.jpg",
-    availability_status: "available",
-    is_trending: false,
-    trending_order: null,
-    preparation_time: 10,
-    created_at: new Date().toISOString(),
-    category: INITIAL_CATEGORIES[5],
-  },
 
   // MUTTON
   {

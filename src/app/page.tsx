@@ -10,13 +10,13 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col justify-between relative overflow-hidden">
       {/* Top Banner */}
-      <div className="bg-emerald-900 text-emerald-100 text-xs font-bold py-1.5 px-4 text-center flex items-center justify-center gap-2 border-b border-emerald-800 z-20">
-        <Phone className="w-3.5 h-3.5 text-emerald-300" />
-        <a href="tel:+918356928612" className="hover:underline flex items-center gap-1">
-          <span>Call to Order:</span>
+      <div className="bg-emerald-900 text-emerald-100 text-[10px] sm:text-[11px] font-bold py-1.5 px-2 sm:px-4 text-center flex items-center justify-center gap-1.5 sm:gap-2 border-b border-emerald-800 z-20">
+        <Phone className="w-3.5 h-3.5 text-emerald-300 shrink-0" />
+        <a href="tel:+918356928612" className="hover:underline flex items-center gap-1 whitespace-nowrap">
+          <span className="hidden sm:inline">Call to Order:</span>
           <span className="text-amber-300 font-mono font-extrabold">+91 83569 28612</span>
         </a>
-        <span className="hidden sm:inline text-emerald-400 font-normal">| Goregaon West, Mumbai</span>
+        <span className="hidden sm:inline text-emerald-400 font-normal whitespace-nowrap">| Goregaon West, Mumbai</span>
       </div>
 
       {/* Decorative ambient warmth */}
@@ -50,12 +50,12 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0">
           <a
             href="tel:+918356928612"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-800 hover:bg-red-900 text-white text-xs font-extrabold shadow-sm transition-all"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-red-800 hover:bg-red-900 text-white text-xs font-extrabold shadow-sm transition-all whitespace-nowrap"
           >
-            <Phone className="w-3.5 h-3.5 text-amber-300" />
+            <Phone className="w-3.5 h-3.5 text-amber-300 shrink-0" />
             <span>📞 +91 83569 28612</span>
           </a>
 

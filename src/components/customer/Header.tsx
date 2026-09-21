@@ -16,13 +16,13 @@ export function CustomerHeader({ searchQuery = "", onSearchChange, showSearch = 
   return (
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border/60 shadow-xs transition-all">
       {/* Phone Ordering Banner */}
-      <div className="bg-emerald-900 text-emerald-100 text-[11px] font-bold py-1.5 px-4 text-center flex items-center justify-center gap-2 border-b border-emerald-800">
-        <Phone className="w-3.5 h-3.5 text-emerald-300" />
-        <a href="tel:+918356928612" className="hover:underline flex items-center gap-1">
-          <span>Call to Order:</span>
+      <div className="bg-emerald-900 text-emerald-100 text-[10px] sm:text-[11px] font-bold py-1.5 px-2 sm:px-4 text-center flex items-center justify-center gap-1.5 sm:gap-2 border-b border-emerald-800">
+        <Phone className="w-3.5 h-3.5 text-emerald-300 shrink-0" />
+        <a href="tel:+918356928612" className="hover:underline flex items-center gap-1 whitespace-nowrap">
+          <span className="hidden sm:inline">Call to Order:</span>
           <span className="text-amber-300 font-mono font-extrabold">+91 83569 28612</span>
         </a>
-        <span className="hidden sm:inline text-emerald-400 font-normal">| Goregaon West, Mumbai</span>
+        <span className="hidden sm:inline text-emerald-400 font-normal whitespace-nowrap">| Goregaon West, Mumbai</span>
       </div>
 
       <div className="max-w-5xl mx-auto px-4 py-2 sm:py-2.5">
@@ -61,12 +61,12 @@ export function CustomerHeader({ searchQuery = "", onSearchChange, showSearch = 
           </Link>
 
           {/* Call to Order Action */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <a
               href="tel:+918356928612"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-red-800 hover:bg-red-900 text-white font-extrabold text-xs sm:text-sm shadow-md shadow-red-900/20 transition-all active:scale-95"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-red-800 hover:bg-red-900 text-white font-extrabold text-[11px] sm:text-sm shadow-md shadow-red-900/20 transition-all active:scale-95 whitespace-nowrap"
             >
-              <Phone className="w-4 h-4 text-amber-300" />
+              <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300 shrink-0" />
               <span>📞 +91 83569 28612</span>
             </a>
           </div>
