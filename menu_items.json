@@ -1,0 +1,142 @@
+[
+  {
+    "id": "1135ffd2-104c-4c2d-a5da-e1b0c72e8045",
+    "name": "Biryani Combo",
+    "price": 199,
+    "image_url": "/images/menu/biryani-combo.jpg",
+    "category_id": "cf5e5266-0ddf-4662-9e1e-3b0015419c18"
+  },
+  {
+    "id": "73067723-3e53-4ec6-97b1-351604d8ac42",
+    "name": "Donne Biryani",
+    "price": 249,
+    "image_url": "/images/menu/donne-biryani.jpg",
+    "category_id": "cf5e5266-0ddf-4662-9e1e-3b0015419c18"
+  },
+  {
+    "id": "3f2e62b4-d478-412a-8086-60b84ba22f07",
+    "name": "Chicken Thali",
+    "price": 249,
+    "image_url": "/images/menu/chicken-thali.jpg",
+    "category_id": "526e93fc-4da1-46f7-b82b-dfb5e4a8bad4"
+  },
+  {
+    "id": "ac90a4c8-6cbc-4b63-ae72-5a31f784b012",
+    "name": "Veg Thali",
+    "price": 199,
+    "image_url": "/images/menu/veg-thali.jpg",
+    "category_id": "526e93fc-4da1-46f7-b82b-dfb5e4a8bad4"
+  },
+  {
+    "id": "2924ebe1-b35c-4423-82dc-ece9d47314ca",
+    "name": "Ghee Rice Kabab",
+    "price": 149,
+    "image_url": "/images/menu/ghee-rice-kabab.jpg",
+    "category_id": "cf5e5266-0ddf-4662-9e1e-3b0015419c18"
+  },
+  {
+    "id": "352a2ac8-324b-4933-9cdc-bc3c782cc7a0",
+    "name": "Chapati 1 Plate",
+    "price": 60,
+    "image_url": "/images/menu/chapati.jpg",
+    "category_id": "1f5faae4-e781-487b-a1f5-b71b1fbf373e"
+  },
+  {
+    "id": "4c38ad21-d3d1-44c4-8d6f-4a184864a391",
+    "name": "Pundi Chicken Gassi",
+    "price": 199,
+    "image_url": "/images/menu/pundi-chicken-gassi.jpg",
+    "category_id": "1f5faae4-e781-487b-a1f5-b71b1fbf373e"
+  },
+  {
+    "id": "ef63d3cc-d635-4a0a-9b4f-3e6af7556886",
+    "name": "Kori Rotti Sukka",
+    "price": 249,
+    "image_url": "/images/menu/kori-rotti-sukka.jpg",
+    "category_id": "1f5faae4-e781-487b-a1f5-b71b1fbf373e"
+  },
+  {
+    "id": "f69b28d0-e9c0-4a9f-a5c2-021ae0b2aa13",
+    "name": "Mutton Ghee Roast",
+    "price": 499,
+    "image_url": "/images/menu/mutton-ghee-roast.jpg",
+    "category_id": "b8d889fd-adf5-42e3-8e2e-9d38b4c0df08"
+  },
+  {
+    "id": "2092fced-4e65-45eb-afc0-c558ae2bede8",
+    "name": "Mutton Pepper Fry",
+    "price": 499,
+    "image_url": "/images/menu/mutton-pepper-fry.jpg",
+    "category_id": "b8d889fd-adf5-42e3-8e2e-9d38b4c0df08"
+  },
+  {
+    "id": "3a729bab-3d65-4e86-baaa-4905313f978c",
+    "name": "Chicken Sukka",
+    "price": 180,
+    "image_url": "/images/menu/chicken-sukka.jpg",
+    "category_id": "8b677621-5cb3-4981-ad59-fadbe168c668"
+  },
+  {
+    "id": "526533c9-67a1-4c68-bde3-b57a327099d0",
+    "name": "Chicken Pepper Fry",
+    "price": 249,
+    "image_url": "/images/menu/chicken-pepper-fry.jpg",
+    "category_id": "8b677621-5cb3-4981-ad59-fadbe168c668"
+  },
+  {
+    "id": "0aa571d6-c49d-48c4-a42c-8025957eff83",
+    "name": "1 Plate Chicken Kabab",
+    "price": 180,
+    "image_url": "/images/menu/chicken-kabab.jpg",
+    "category_id": "8b677621-5cb3-4981-ad59-fadbe168c668"
+  },
+  {
+    "id": "8fe2675c-aa0f-4a1c-9be4-f9fd68794f68",
+    "name": "Chicken Kabab",
+    "price": 180,
+    "image_url": "/images/menu/chicken-kabab.jpg",
+    "category_id": "8420d793-f13e-483b-86b4-d4c6596e085e"
+  },
+  {
+    "id": "b80d2297-4024-4658-aab8-d5afc74dccdb",
+    "name": "Chicken Sukka (Side)",
+    "price": 180,
+    "image_url": "/images/menu/chicken-sukka.jpg",
+    "category_id": "8420d793-f13e-483b-86b4-d4c6596e085e"
+  },
+  {
+    "id": "a3822c04-c681-490d-932e-5d8e85a44269",
+    "name": "Panner Pepper Fry",
+    "price": 249,
+    "image_url": "/images/menu/paneer-pepper-fry.jpg",
+    "category_id": "dd247c7e-4253-41ec-9fbe-9a4acc0b9cd7"
+  },
+  {
+    "id": "ffd02ed5-7ab7-4f49-be70-6bbbeead1e8d",
+    "name": "Panner Chilli",
+    "price": 249,
+    "image_url": "/images/menu/paneer-chilli.jpg",
+    "category_id": "dd247c7e-4253-41ec-9fbe-9a4acc0b9cd7"
+  },
+  {
+    "id": "b0712e85-2c3f-4f51-8483-2d5ab025d650",
+    "name": "Fish Fry",
+    "price": 249,
+    "image_url": "/images/menu/fish-fry.jpg",
+    "category_id": "5b71ee7c-883b-40ff-babe-084837854c56"
+  },
+  {
+    "id": "6f64420c-1fff-4818-80b6-8204849f8842",
+    "name": "Fish Thali",
+    "price": 249,
+    "image_url": "/images/menu/fish-thali.jpg",
+    "category_id": "526e93fc-4da1-46f7-b82b-dfb5e4a8bad4"
+  },
+  {
+    "id": "ee7fbfe8-bbd5-4788-bc1a-b632657dec0a",
+    "name": "Neerdosa 1 Plate",
+    "price": 80,
+    "image_url": "/images/menu/neer-dosa.jpg",
+    "category_id": "1f5faae4-e781-487b-a1f5-b71b1fbf373e"
+  }
+]

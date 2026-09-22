@@ -2,6 +2,22 @@ import { SupabaseClient } from "@supabase/supabase-js";
 import { MenuItem, MostOrderedItem } from "@/types/database";
 import { INITIAL_MENU_ITEMS } from "@/lib/constants/seedData";
 
+const LOCAL_IMAGE_FALLBACK_MAP: Record<string, string> = {
+  "Parota 1 Plate": "/images/menu/parota-1-plate.jpg",
+  "Neerdosa Chicken Sukka": "/images/menu/neerdosa-chicken-sukka.jpg",
+  "Chicken Pulimunchi": "/images/menu/chicken-pulimunchi.jpg",
+  "Chicken Banamanjal": "/images/menu/chicken-banamanjal.jpg",
+  "Panner Biriyani": "/images/menu/panner-biriyani.jpg",
+  "Mutton Sukka": "/images/menu/mutton-sukka.jpg",
+};
+
+const applyImageFallback = (item: MenuItem): MenuItem => {
+  if (!item.image_url && LOCAL_IMAGE_FALLBACK_MAP[item.name]) {
+    return { ...item, image_url: LOCAL_IMAGE_FALLBACK_MAP[item.name] };
+  }
+  return item;
+};
+
 export async function getMenuItems(supabase: SupabaseClient): Promise<MenuItem[]> {
   const { data, error } = await supabase
     .from("menu_items")
@@ -13,7 +29,7 @@ export async function getMenuItems(supabase: SupabaseClient): Promise<MenuItem[]
     return INITIAL_MENU_ITEMS;
   }
 
-  return data;
+  return data.map(applyImageFallback);
 }
 
 export async function getTrendingMenuItems(supabase: SupabaseClient): Promise<MenuItem[]> {
@@ -28,7 +44,7 @@ export async function getTrendingMenuItems(supabase: SupabaseClient): Promise<Me
     return [];
   }
 
-  return data || [];
+  return (data || []).map(applyImageFallback);
 }
 
 export async function getMenuItemById(supabase: SupabaseClient, id: string): Promise<MenuItem | null> {
@@ -43,7 +59,7 @@ export async function getMenuItemById(supabase: SupabaseClient, id: string): Pro
     return INITIAL_MENU_ITEMS.find((item) => item.id === id) || null;
   }
 
-  return data;
+  return applyImageFallback(data);
 }
 
 export async function getMostOrderedMenuItems(
@@ -82,7 +98,7 @@ export async function getMostOrderedMenuItems(
     .in("id", itemIds);
 
   const menuItemsMap = new Map<string, MenuItem>();
-  (menuItems || []).forEach((item) => menuItemsMap.set(item.id, item));
+  (menuItems || []).forEach((item) => menuItemsMap.set(item.id, applyImageFallback(item)));
 
   return sortedTotals
     .map((st) => ({
