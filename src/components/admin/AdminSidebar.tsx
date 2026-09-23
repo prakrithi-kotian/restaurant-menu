@@ -22,7 +22,7 @@ export function AdminSidebar() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.push("/admin/login");
+    router.push("/kitchen-console/login");
     router.refresh();
   };
 

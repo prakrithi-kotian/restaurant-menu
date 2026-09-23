@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { CustomerFooter } from "@/components/customer/Footer";
-import { QrCode, ArrowRight, ShieldCheck, Sparkles, Flame, Phone, MapPin } from "lucide-react";
+import { QrCode, ArrowRight, Sparkles, Flame, Phone, MapPin } from "lucide-react";
 
 export default function LandingPage() {
   return (
@@ -58,14 +58,6 @@ export default function LandingPage() {
             <Phone className="w-3.5 h-3.5 text-amber-300 shrink-0" />
             <span>📞 +91 83569 28612</span>
           </a>
-
-          <Link
-            href="/admin/login"
-            className="text-xs font-bold text-muted-foreground hover:text-foreground flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-100/50 dark:bg-amber-950/40 border border-amber-900/20 transition-colors"
-          >
-            <ShieldCheck className="w-3.5 h-3.5 text-red-700" />
-            Staff Login
-          </Link>
         </div>
       </header>
 

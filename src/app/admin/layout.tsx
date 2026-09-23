@@ -11,23 +11,22 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const router = useRouter();
   const supabase = createClient();
 
-  const [authorized, setAuthorized] = useState<boolean | null>(() => (pathname === "/admin/login" ? true : null));
+  const [authorized, setAuthorized] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (pathname === "/admin/login") return;
 
     let isMounted = true;
     async function checkAuth() {
       const { data } = await supabase.auth.getUser();
       if (!data.user) {
-        router.push("/admin/login");
+        router.push("/kitchen-console/login");
         return;
       }
 
       const profile = await getAdminProfile(supabase, data.user.id);
       if (!profile || profile.role !== "admin") {
         await supabase.auth.signOut();
-        router.push("/admin/login");
+        router.push("/kitchen-console/login");
         return;
       }
 
@@ -41,10 +40,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       isMounted = false;
     };
   }, [pathname, router, supabase]);
-
-  if (pathname === "/admin/login") {
-    return <>{children}</>;
-  }
 
   if (authorized === null) {
     return (
